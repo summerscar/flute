@@ -21,7 +21,6 @@ loader.load(
   "/flute.fbx",
   function (fbx) {
     scene.add(fbx);
-    console.log('fbx:', fbx)
 
     const newMaterial = fbx.children[3].material.clone()
     newMaterial.color = new THREE.Color('red')
@@ -51,11 +50,11 @@ directionalLight2.position.set(0, 0, -1000);
 scene.add(directionalLight2);
 
 const directionalLight3 = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight3.position.set(0, 1000, 0);
+directionalLight3.position.set(1000, 0, 0);
 scene.add(directionalLight3);
 
 const directionalLight4 = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight4.position.set(0, -1000, 0);
+directionalLight4.position.set(-1000, 0, 0);
 scene.add(directionalLight4);
 
 const PointLight = new THREE.PointLight(0xff0000, 1, 100);
