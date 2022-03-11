@@ -3,7 +3,7 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { TrackballControls } from "three/examples/jsm/controls/TrackballControls.js";
 // init
 
-const camera = new THREE.PerspectiveCamera(
+const camera = window.camera = new THREE.PerspectiveCamera(
   50,
   window.innerWidth / window.innerHeight,
   0.01,
@@ -12,7 +12,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.z = 1000;
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xcccccc);
+scene.background = new THREE.Color(0xffffff);
 // scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
 
 const loader = new FBXLoader();
@@ -20,6 +20,8 @@ const loader = new FBXLoader();
 loader.load(
   "/flute.fbx",
   function (fbx) {
+    console.log('fbx:', fbx)
+    fbx.rotation.z = Math.PI / 2
     scene.add(fbx);
 
     const newMaterial = fbx.children[3].material.clone()
@@ -38,7 +40,7 @@ loader.load(
 
 // lights
 
-const light = new THREE.AmbientLight(0x404040); // soft white light
+const light = new THREE.AmbientLight(0x404040);
 scene.add(light);
 
 const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
@@ -50,11 +52,11 @@ directionalLight2.position.set(0, 0, -1000);
 scene.add(directionalLight2);
 
 const directionalLight3 = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight3.position.set(1000, 0, 0);
+directionalLight3.position.set(0, 1000, 0);
 scene.add(directionalLight3);
 
 const directionalLight4 = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight4.position.set(-1000, 0, 0);
+directionalLight4.position.set(0, -1000, 0);
 scene.add(directionalLight4);
 
 const PointLight = new THREE.PointLight(0xff0000, 1, 100);
