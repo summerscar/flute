@@ -1,35 +1,33 @@
-import * as THREE from "three";
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
-import { TrackballControls } from "three/examples/jsm/controls/TrackballControls.js";
-// init
+import * as THREE from 'three';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js';
 
-const camera = window.camera = new THREE.PerspectiveCamera(
+const camera = (window.camera = new THREE.PerspectiveCamera(
   50,
   window.innerWidth / window.innerHeight,
   0.01,
   10000
-);
+));
 camera.position.z = 1000;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
-// scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
 
 const loader = new FBXLoader();
 
 loader.load(
-  "/flute.fbx",
+  '/flute.fbx',
   function (fbx) {
-    console.log('fbx:', fbx)
-    fbx.rotation.z = Math.PI / 2
+    console.log('fbx:', fbx);
+    fbx.rotation.z = Math.PI / 2;
     scene.add(fbx);
 
-    const newMaterial = fbx.children[3].material.clone()
-    newMaterial.color = new THREE.Color('red')
-    newMaterial.emissiveIntensity = 0
-    newMaterial.reflectivity = 0
-    newMaterial.refractionRatio = 0
-    newMaterial.shininess = 0
+    const newMaterial = fbx.children[3].material.clone();
+    newMaterial.color = new THREE.Color('red');
+    newMaterial.emissiveIntensity = 0;
+    newMaterial.reflectivity = 0;
+    newMaterial.refractionRatio = 0;
+    newMaterial.shininess = 0;
     fbx.children[2].children[11].material = newMaterial;
   },
   undefined,
@@ -44,7 +42,7 @@ const light = new THREE.AmbientLight(0x404040);
 scene.add(light);
 
 const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight1.position.set(0, 0, 1000);
+directionalLight1.position.set(-500, 0, 1000);
 scene.add(directionalLight1);
 
 const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
@@ -73,7 +71,7 @@ controls.rotateSpeed = 1.5;
 controls.zoomSpeed = 10;
 controls.panSpeed = 1;
 
-controls.keys = ["KeyA", "KeyS", "KeyD"];
+controls.keys = ['KeyA', 'KeyS', 'KeyD'];
 // animation
 function animation(time) {
   renderer.render(scene, camera);
