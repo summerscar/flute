@@ -1,19 +1,25 @@
-import React, { RefObject, FC, Suspense, useEffect, useRef, useImperativeHandle } from 'react';
+import { RefObject, FC, Suspense, useEffect, useRef, useImperativeHandle } from 'react';
 import { Color, Vector3, Mesh, MeshPhongMaterial, Group } from 'three';
 import { useLoader, Canvas } from '@react-three/fiber';
-import { TrackballControls } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
+import { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
-import { camera } from '@/threejs';
+import { camera } from '@/threejs/camera';
 
 import './index.scss';
 
-export type Actions = { setMaterialWithKeyIndex: (index: number) => void; reset: () => void };
+export type Actions = {
+  setMaterialWithKeyIndex: (index: number) => void;
+  reset: () => void;
+  setCameraPosition: (x: number, y: number, z: number) => void;
+};
 
 type FluteProps = {
   actionRef: RefObject<Actions>;
 };
 
 const Flute: FC<FluteProps> = ({ actionRef }) => {
+  const controls = useRef<OrbitControlsImpl | null>(null);
   const fbx = useLoader(FBXLoader, '/flute.fbx');
   const flute = useRef<Group>();
   const hightLightMaterial = useRef<MeshPhongMaterial>();
@@ -43,14 +49,27 @@ const Flute: FC<FluteProps> = ({ actionRef }) => {
     });
   };
 
+  const setCameraPosition = (x: number, y: number, z: number) => {
+    if (!controls.current) return;
+    controls.current.reset();
+
+    camera.position.set(x, y, z);
+    // camera.rotation.set(0, 0, 0, 'XYZ');
+
+    // camera.rotation.set(0, 0, 0);
+    // camera.lookAt(0, 0, 0);
+  };
+
   useImperativeHandle(actionRef, () => ({
     setMaterialWithKeyIndex,
-    reset
+    reset,
+    setCameraPosition
   }));
 
   useEffect(() => {
     window.flute = flute.current = fbx;
     fbx.rotation.z = Math.PI / 2;
+    fbx.position.x = -200;
     getHightLightMaterial((fbx.children[3] as Mesh).material as MeshPhongMaterial);
   }, [fbx]);
 
@@ -74,7 +93,7 @@ const Flute: FC<FluteProps> = ({ actionRef }) => {
           <primitive object={fbx} />
         </Suspense>
         {/* control */}
-        <TrackballControls rotateSpeed={1.5} zoomSpeed={10} panSpeed={1} />
+        <OrbitControls ref={controls} panSpeed={1} />
       </Canvas>
     </div>
   );

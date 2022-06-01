@@ -1,7 +1,15 @@
 .controlBar {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
+  flex: none;
+  width: 100%;
+  text-align: center;
+}
+
+.noteBtn {
+  margin: 2px;
+  padding: 3px 8px;
+  user-select: none;
+}
+
+.divider {
+  height: 10px;
 }

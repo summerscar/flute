@@ -6,6 +6,6 @@ const camera = (window.camera = new THREE.PerspectiveCamera(
   0.01,
   10000
 ));
-camera.position.z = 1000;
+camera.position.z = 750;
 
 export { camera };

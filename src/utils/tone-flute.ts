@@ -23,7 +23,6 @@ const sampler = new Tone.Sampler({
 let stopTimer: ReturnType<typeof setTimeout>;
 
 const play = (tone: Note = 'C5') => {
-  console.log('tone:', tone);
   stopTimer && clearTimeout(stopTimer);
 
   Tone.loaded().then(() => {
