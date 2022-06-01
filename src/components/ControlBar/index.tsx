@@ -1,5 +1,7 @@
 import React, { RefObject } from 'react';
-import { Actions } from '@/components/Flute';
+import { Note } from 'tone/build/esm/core/type/NoteUnits';
+import { play } from '@/utils/tone-flute';
+import type { Actions } from '@/components/Flute';
 
 import './index.scss';
 
@@ -8,8 +10,9 @@ type ControlBarProps = {
 };
 
 const ControlBar: React.FC<ControlBarProps> = ({ actions }) => {
-  const handleSetMaterialWithKeyIndex = (index: number) => () => {
-    actions.current?.setMaterialWithKeyIndex?.(index);
+  const handlePlayTone = (tone: Note) => () => {
+    play(tone);
+    actions.current?.setMaterialWithKeyIndex?.(10);
   };
   const handleReset = () => {
     actions.current?.reset?.();
@@ -17,9 +20,9 @@ const ControlBar: React.FC<ControlBarProps> = ({ actions }) => {
 
   return (
     <div className="controlBar">
-      <button onClick={handleSetMaterialWithKeyIndex(4)}>❶</button>
-      <button onClick={handleSetMaterialWithKeyIndex(8)}>❷</button>
-      <button onClick={handleSetMaterialWithKeyIndex(11)}>❸</button>
+      <button onClick={handlePlayTone('C5')}>❶</button>
+      <button onClick={handlePlayTone('D5')}>❷</button>
+      <button onClick={handlePlayTone('E5')}>❸</button>
       <button onClick={handleReset}>重置</button>
     </div>
   );
