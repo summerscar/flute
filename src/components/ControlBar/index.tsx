@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { RefObject } from 'react';
+import { Actions } from '@/components/Flute';
 
-const ControlBar: React.FC = () => {
+import './index.scss';
+
+type ControlBarProps = {
+  actions: RefObject<Actions>;
+};
+
+const ControlBar: React.FC<ControlBarProps> = ({ actions }) => {
+  const handleSetMaterialWithKeyIndex = (index: number) => () => {
+    actions.current?.setMaterialWithKeyIndex?.(index);
+  };
+  const handleReset = () => {
+    actions.current?.reset?.();
+  };
+
   return (
-    <div>
-      <button>❶</button>
-      <button>❷</button>
-      <button>❸</button>
+    <div className="controlBar">
+      <button onClick={handleSetMaterialWithKeyIndex(4)}>❶</button>
+      <button onClick={handleSetMaterialWithKeyIndex(8)}>❷</button>
+      <button onClick={handleSetMaterialWithKeyIndex(11)}>❸</button>
+      <button onClick={handleReset}>重置</button>
     </div>
   );
 };
