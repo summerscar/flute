@@ -9,7 +9,7 @@ import { camera } from '@/threejs/camera';
 import './index.scss';
 
 export type Actions = {
-  setMaterialWithKeyIndex: (index: number) => void;
+  setMaterialWithKeys: (keysConfig: Record<number, number[]>) => void;
   reset: () => void;
   setCameraPosition: (x: number, y: number, z: number) => void;
 };
@@ -25,6 +25,38 @@ const Flute: FC<FluteProps> = ({ actionRef }) => {
   const hightLightMaterial = useRef<MeshPhongMaterial>();
   const defaultMaterial = useRef<MeshPhongMaterial>();
 
+  const setMaterialWithKeys = (keysConfig: Record<number, number[]>) => {
+    Object.entries(keysConfig).forEach(([index, keys]) => {
+      keys.forEach((key) => {
+        if (!flute.current || !hightLightMaterial.current) return;
+        (flute.current.children[index as unknown as number].children[key] as Mesh).material =
+          hightLightMaterial.current;
+      });
+    });
+  };
+
+  const reset = () => {
+    if (!flute.current) return;
+    flute.current.children.forEach((child) => {
+      (child.children as Mesh[]).forEach((item) => {
+        item.material = defaultMaterial.current!;
+      });
+    });
+  };
+
+  const setCameraPosition = (x: number, y: number, z: number) => {
+    if (!controls.current) return;
+
+    controls.current.reset();
+    camera.position.set(x, y, z);
+  };
+
+  useImperativeHandle(actionRef, () => ({
+    setMaterialWithKeys,
+    reset,
+    setCameraPosition
+  }));
+
   const getHightLightMaterial = (material: MeshPhongMaterial) => {
     defaultMaterial.current = material;
 
@@ -37,36 +69,16 @@ const Flute: FC<FluteProps> = ({ actionRef }) => {
     hightLightMaterial.current = newMaterial;
   };
 
-  const setMaterialWithKeyIndex = (keyIndex: number) => {
-    if (!flute.current || !hightLightMaterial.current) return;
-    (flute.current.children[2].children[keyIndex] as Mesh).material = hightLightMaterial.current;
+  const fixOneKey = (fbx: Group) => {
+    const key = fbx.children[2].children[13].clone();
+    key.position.y = 110;
+    fbx.children[2].add(key);
   };
-
-  const reset = () => {
-    if (!flute.current) return;
-    (flute.current.children[2].children as Mesh[]).forEach((item) => {
-      item.material = defaultMaterial.current!;
-    });
-  };
-
-  const setCameraPosition = (x: number, y: number, z: number) => {
-    if (!controls.current) return;
-    controls.current.reset();
-
-    camera.position.set(x, y, z);
-    // camera.rotation.set(0, 0, 0, 'XYZ');
-
-    // camera.rotation.set(0, 0, 0);
-    // camera.lookAt(0, 0, 0);
-  };
-
-  useImperativeHandle(actionRef, () => ({
-    setMaterialWithKeyIndex,
-    reset,
-    setCameraPosition
-  }));
 
   useEffect(() => {
+    if (!fbx) return;
+    fixOneKey(fbx);
+
     window.flute = flute.current = fbx;
     fbx.rotation.z = Math.PI / 2;
     fbx.position.x = -200;

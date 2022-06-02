@@ -10,7 +10,7 @@ function App() {
   const [currentNote, setCurrentNote] = React.useState<NoteConfig>();
   const handleChangeNote = (noteConfig: NoteConfig) => {
     actions.current?.reset?.();
-    actions.current?.setMaterialWithKeyIndex?.(10);
+    actions.current?.setMaterialWithKeys?.(noteConfig.keys);
     setCurrentNote(noteConfig);
   };
 
