@@ -11,52 +11,52 @@ const NOTES: NoteConfig[] = [
   {
     note: 'C3',
     displayName: 'C4',
-    keys: { 2: [10, 12, 14, 22, 8, 7, 6, 16], 0: [3] }
+    keys: { 2: [10, 12, 14, 21, 8, 7, 6, 16], 0: [3] }
   },
   {
     note: 'C#3',
     displayName: 'C#4 / Db4',
-    keys: { 2: [10, 12, 14, 22, 8, 7, 6, 16] }
+    keys: { 2: [10, 12, 14, 21, 8, 7, 6, 16] }
   },
   {
     note: 'D3',
     displayName: 'D4',
-    keys: { 2: [10, 12, 14, 22, 8, 7, 6] }
+    keys: { 2: [10, 12, 14, 21, 8, 7, 6] }
   },
   {
     note: 'D#3',
     displayName: 'D#4 / Eb4',
-    keys: { 2: [10, 12, 14, 22, 8, 7, 6, 17] }
+    keys: { 2: [10, 12, 14, 21, 8, 7, 6, 17] }
   },
   {
     note: 'E3',
     displayName: 'E4',
-    keys: { 2: [10, 12, 14, 22, 8, 7, 17] }
+    keys: { 2: [10, 12, 14, 21, 8, 7, 17] }
   },
   {
     note: 'F3',
     displayName: 'F4',
-    keys: { 2: [10, 12, 14, 22, 8, 17] }
+    keys: { 2: [10, 12, 14, 21, 8, 17] }
   },
   {
     note: 'F#3',
     displayName: 'F#4 / Gb4',
-    keys: { 2: [10, 12, 14, 22, 6, 17] }
+    keys: { 2: [10, 12, 14, 21, 6, 17] }
   },
   {
     note: 'G3',
     displayName: 'G4',
-    keys: { 2: [10, 12, 14, 22, 17] }
+    keys: { 2: [10, 12, 14, 21, 17] }
   },
   {
     note: 'G#3',
     displayName: 'G#4 / Ab4',
-    keys: { 2: [10, 12, 14, 22, 17, 19] }
+    keys: { 2: [10, 12, 14, 21, 17, 19] }
   },
   {
     note: 'A3',
     displayName: 'A4',
-    keys: { 2: [10, 12, 22, 17] }
+    keys: { 2: [10, 12, 21, 17] }
   },
   {
     note: 'A#3',
@@ -66,7 +66,7 @@ const NOTES: NoteConfig[] = [
   {
     note: 'B3',
     displayName: 'B4',
-    keys: { 2: [10, 22, 17] }
+    keys: { 2: [10, 21, 17] }
   },
   // 5
   {
@@ -82,42 +82,42 @@ const NOTES: NoteConfig[] = [
   {
     note: 'D4',
     displayName: 'D5',
-    keys: { 2: [12, 14, 22, 8, 7, 6] }
+    keys: { 2: [12, 14, 21, 8, 7, 6] }
   },
   {
     note: 'D#4',
     displayName: 'D#5 / Eb5',
-    keys: { 2: [12, 14, 22, 8, 7, 6, 17] }
+    keys: { 2: [12, 14, 21, 8, 7, 6, 17] }
   },
   {
     note: 'E4',
     displayName: 'E5',
-    keys: { 2: [10, 12, 14, 22, 8, 7, 17] }
+    keys: { 2: [10, 12, 14, 21, 8, 7, 17] }
   },
   {
     note: 'F4',
     displayName: 'F5',
-    keys: { 2: [10, 12, 14, 22, 8, 17] }
+    keys: { 2: [10, 12, 14, 21, 8, 17] }
   },
   {
     note: 'F#4',
     displayName: 'F#5 / Gb5',
-    keys: { 2: [10, 12, 14, 22, 6, 17] }
+    keys: { 2: [10, 12, 14, 21, 6, 17] }
   },
   {
     note: 'G4',
     displayName: 'G5',
-    keys: { 2: [10, 12, 14, 22, 17] }
+    keys: { 2: [10, 12, 14, 21, 17] }
   },
   {
     note: 'G#4',
     displayName: 'G#5 / Ab5',
-    keys: { 2: [10, 12, 14, 22, 17, 19] }
+    keys: { 2: [10, 12, 14, 21, 17, 19] }
   },
   {
     note: 'A4',
     displayName: 'A5',
-    keys: { 2: [10, 12, 22, 17] }
+    keys: { 2: [10, 12, 21, 17] }
   },
   {
     note: 'A#4',
@@ -127,7 +127,7 @@ const NOTES: NoteConfig[] = [
   {
     note: 'B4',
     displayName: 'B5',
-    keys: { 2: [10, 22, 17] }
+    keys: { 2: [10, 21, 17] }
   },
   // 6
   {
@@ -144,27 +144,27 @@ const NOTES: NoteConfig[] = [
   {
     note: 'D5',
     displayName: 'D6',
-    keys: { 2: [12, 14, 22, 17] }
+    keys: { 2: [12, 14, 21, 17] }
   },
   {
     note: 'D#5',
     displayName: 'D#6 / Eb6',
-    keys: { 2: [10, 12, 14, 22, 17, 19, 6, 7, 8, 17] }
+    keys: { 2: [10, 12, 14, 21, 17, 19, 6, 7, 8, 17] }
   },
   {
     note: 'E5',
     displayName: 'E6',
-    keys: { 2: [10, 12, 22, 17, 7, 8, 17] }
+    keys: { 2: [10, 12, 21, 17, 7, 8, 17] }
   },
   {
     note: 'F5',
     displayName: 'F6',
-    keys: { 2: [10, 14, 22, 17, 8, 17] }
+    keys: { 2: [10, 14, 21, 17, 8, 17] }
   },
   {
     note: 'F#5',
     displayName: 'F#6 / Gb6',
-    keys: { 2: [10, 14, 22, 17, 6, 17] }
+    keys: { 2: [10, 14, 21, 17, 6, 17] }
   },
   {
     note: 'G5',
@@ -179,17 +179,17 @@ const NOTES: NoteConfig[] = [
   {
     note: 'A5',
     displayName: 'A6',
-    keys: { 2: [22, 12, 8, 17] }
+    keys: { 2: [21, 12, 8, 17] }
   },
   {
     note: 'A#5',
     displayName: 'A#6 / Bb6',
-    keys: { 2: [22, 8], 0: [5] }
+    keys: { 2: [21, 8], 0: [5] }
   },
   {
     note: 'B5',
     displayName: 'B6',
-    keys: { 2: [22, 10, 14] }
+    keys: { 2: [21, 10, 14] }
   },
   // 7
   {
@@ -205,7 +205,7 @@ const NOTES: NoteConfig[] = [
   {
     note: 'D6',
     displayName: 'D7',
-    keys: { 2: [14, 22, 7, 8, 16], 0: [3] }
+    keys: { 2: [14, 21, 7, 8, 16], 0: [3] }
   }
 ];
 

@@ -19,6 +19,7 @@ type FluteProps = {
 };
 
 const Flute: FC<FluteProps> = ({ actionRef }) => {
+  const isKeyFixed = useRef(false);
   const controls = useRef<OrbitControlsImpl | null>(null);
   const fbx = useLoader(FBXLoader, '/flute.fbx');
   const flute = useRef<Group>();
@@ -70,9 +71,11 @@ const Flute: FC<FluteProps> = ({ actionRef }) => {
   };
 
   const fixOneKey = (fbx: Group) => {
+    if (isKeyFixed.current) return;
     const key = fbx.children[2].children[13].clone();
     key.position.y = 110;
     fbx.children[2].add(key);
+    isKeyFixed.current = true;
   };
 
   useEffect(() => {
