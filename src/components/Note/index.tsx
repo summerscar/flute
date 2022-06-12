@@ -1,4 +1,4 @@
-import { NoteConfig } from '@/utils/notes';
+import React, { NoteConfig } from '@/utils/notes';
 import './index.scss';
 
 type NoteProps = {

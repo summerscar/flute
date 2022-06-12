@@ -16,7 +16,7 @@
     "@types/three": "^0.141.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.0",
+    "react-scripts": "5.0.1",
     "sass": "^1.52.1",
     "three": "^0.141.0",
     "tone": "^14.7.77",
@@ -54,7 +54,10 @@
       "eslint:recommended",
       "plugin:react/recommended",
       "plugin:prettier/recommended"
-    ]
+    ],
+    "rules": {
+      "react/prop-types": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -77,6 +80,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,css,scss}": [
+      "npm run lint:fix",
       "prettier --write"
     ]
   }

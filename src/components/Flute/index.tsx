@@ -1,4 +1,4 @@
-import { RefObject, FC, Suspense, useEffect, useRef, useImperativeHandle } from 'react';
+import React, { RefObject, FC, Suspense, useEffect, useRef, useImperativeHandle } from 'react';
 import { Color, Vector3, Mesh, MeshPhongMaterial, Group } from 'three';
 import { useLoader, Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
